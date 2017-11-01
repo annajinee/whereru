@@ -1,0 +1,36 @@
+<div class="col-md-6 col-md-offset-3" style="margin: 5%; margin-bottom: 20%">
+  <div class="container">
+    <div class="card-header" style="margin-bottom: 2%">
+      <h2><i class="zmdi zmdi-account-add"></i> &nbsp;사용자 등록</h2>
+    </div>
+    <div class="card" style="padding:10%;">
+      <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <label for="username">아이디</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
+                 required placeholder="아이디는 tier_code와 같아야 합니다" maxlength="20"/>
+          <div *ngIf="f.submitted && !username.valid" class="help-block">아이디를 입력해주세요</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+          <label for="name">이름</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required
+                 placeholder="식별가능한 이름으로 입력해주세요" maxlength="20"/>
+          <div *ngIf="f.submitted && !name.valid" class="help-block">이름을 입력해주세요</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label for="password">비밀번호</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+                 required maxlength="20"/>
+          <div *ngIf="f.submitted && !password.valid" class="help-block">비밀번호를 입력해주세요</div>
+        </div>
+        <div class="form-group" align="center">
+          <button [disabled]="loading" class="btn btn-info">등록</button>
+          <img *ngIf="loading"
+               src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+          <a [routerLink]="['/home']" class="btn btn-default">취소</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

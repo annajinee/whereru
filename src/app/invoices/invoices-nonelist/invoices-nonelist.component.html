@@ -1,0 +1,236 @@
+<section id="content" style="margin-top: 2%">
+<div class="container">
+  <div class="card-header" style="margin-bottom: 2%">
+    <h2>미 배송조회</h2>
+  </div>
+
+  <div class="card">
+    <div class="card-body card-padding">
+      <div class="row">
+        <form (ngSubmit)="getInvoices(page, datefrom.value, dateto.value, comcode.value, level.value, period.value)">
+
+          <div class="fg-line">
+
+          <div class="col-sm-3 m-b-25">
+            <p class="f-700 m-b-15" style="color: #418c97">조회기간</p>
+
+            <input class="form-control"
+                   a2e-datetimepicker
+                   [date]="getFromDate()"
+                   [options]="a2eOptions"
+                   #datefrom name="datefrom"
+            />
+          </div>
+            <div class="col-sm-3 m-b-25">
+              <p class="f-700 m-b-15" style="color: white">-</p>
+            <input class="form-control"
+                   a2e-datetimepicker
+                   [date]="getToDate()"
+                   [options]="a2eOptions"
+                   #dateto name="dateto"
+            />
+          </div>
+          </div>
+          <div class="col-sm-3 m-b-25">
+            <p class="f-700 m-b-15" style="color: #418c97">배송사</p>
+            <select [disabled]="loading" class="selectpicker" #comcode class='font-black' style="width: 100%;">
+              <option value="">전체</option>
+              <option value="{{invoicecomcode.comcode}}" *ngFor="let invoicecomcode of invoicecomcodes">
+                {{invoicecomcode.name}}
+              </option>
+            </select></div>
+
+
+          <div class="col-sm-3 m-b-25">
+            <table width="100%">
+                <td width="46%">
+                  <p style="color: #418c97;" class="f-700 m-b-15">배송상태</p>
+                  <select [disabled]="loading" class="selectpicker font-black" #level style="width: 100%">
+                    <option value="">전체</option>
+                    <option value="1">배송준비</option>
+                    <option value="2">집화완료</option>
+                    <option value="3">배송진행중</option>
+                    <option value="4">지점도착</option>
+                    <option value="5">배송출발</option>
+                  </select>
+                </td>
+              <td ></td>
+                <td width="46%">
+                  <p style="color: #418c97;" class="f-700 m-b-15">미배송기간</p>
+                  <select [disabled]="loading" class="selectpicker font-black" #period style="width: 100%">
+                    <option value="">전체</option>
+                    <option value="1">등록+1일</option>
+                    <option value="2">등록+2일</option>
+                    <option value="3">등록+3일</option>
+                    <option value="4">등록+4일이상</option>
+                  </select>
+                </td>
+            </table>
+          </div>
+
+
+          <div class="col-sm-3 m-b-25" align="left" style="vertical-align:bottom;margin-top: 1.5%">
+              <button [disabled]="loading" class="btn btn-default hec-button" type="button" style="margin-right: 5%"
+                      (click)="download(datefrom.value, dateto.value, comcode.value, level.value, period.value)">다운로드
+              </button>
+
+              <button [disabled]="loading" class="btn btn-info hec-button" type="submit" (click)="setfirstpage()">조회</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (∫)="closed()" (onDismiss)="dismissed()"
+           (onOpen)="opened()" [cssClass]="cssClass" #modal>
+      <modal-header [show-close]="true">
+        <h4 class="modal-title" style="color: white; background-color:#418c97; font-weight: bold">&nbsp;&nbsp;<i
+          class="zmdi zmdi-trending-up"></i>&nbsp;&nbsp;운송장 정보</h4>
+      </modal-header>
+      <modal-body>
+        <table class="table table-striped table-hover">
+          <tr>
+            <th style="color: #418c97; font-weight: bold" width="150px">운송장</th>
+            <td>{{invoice_invoice}}</td>
+          </tr>
+          <tr>
+            <th style="color: #418c97; font-weight: bold">배송사</th>
+            <td>{{invoice_comcodename}}</td>
+          </tr>
+          <tr>
+            <th style="color: #418c97; font-weight: bold">보내는 분</th>
+            <td>{{invoice_sendername}}</td>
+          </tr>
+          <tr>
+            <th style="color: #418c97; font-weight: bold">받는 분</th>
+            <td>{{invoice_receiverame}}</td>
+          </tr>
+          <tr>
+            <th style="color: #418c97; font-weight: bold">상품정보</th>
+            <td>{{invoice_itemname}}</td>
+          </tr>
+          <tr>
+            <th style="color: #418c97; font-weight: bold">수령인</th>
+            <td>{{invoice_recipent}}</td>
+          </tr>
+        </table>
+      </modal-body>
+      <modal-header>
+        <h4 class="modal-title" style="color: white; background-color:#418c97; font-weight: bold">&nbsp;&nbsp;<i
+          class="zmdi zmdi-trending-up"></i>&nbsp;&nbsp;배송 추적 정보</h4>
+      </modal-header>
+      <modal-body>
+        <table class="table table-striped table-hover" style="text-align: center;">
+          <thead>
+          <tr>
+            <th style="color: #418c97; font-weight: bold; text-align: center" width="25%">처리일시</th>
+            <th style="color: #418c97; font-weight: bold; text-align: center" width="25%">현재위치</th>
+            <th style="color: #418c97; font-weight: bold; text-align: center" width="50%">배송상태</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let detail of invoicesDetail">
+            <td style="vertical-align: middle;">{{ detail.time| slice:0:19 }}</td>
+            <td style="vertical-align: middle;">{{ detail.place }}</td>
+            <td style="vertical-align: middle;">{{ detail.state }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </modal-body>
+      <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.close()">확인</button>
+      </modal-footer>
+    </modal>
+
+    <div class="col-sm-3">
+      <p *ngIf="!loading && (totalPages > 0)" class="f-700 m-b-15">{{ page+1 }} / {{ totalPages }} 페이지, &nbsp;&nbsp;&nbsp;
+        총 갯수 : {{ total$
+        | async }} 건</p>
+      <p *ngIf="!loading && (totalPages == 0)" class="f-700 m-b-15">{{ page }} / {{ totalPages }} 페이지, &nbsp;&nbsp;&nbsp;
+        총 갯수 : {{ total$
+        | async }} 건</p>
+    </div>
+
+
+    <table class="table table-striped table-hover">
+
+      <!--로딩중 -->
+      <!--<p *ngIf="loading" style="text-align: center; align-content: center; margin: 20%">-->
+        <!--로딩중입니다 잠시만 기다려 주세요 .. &nbsp;&nbsp;&nbsp;-->
+        <!--<img *ngIf="loading"-->
+             <!--src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>-->
+      <!--</p>-->
+      <!-- -->
+
+      <!--<thead *ngIf="!loading">-->
+      <!--<tr style="color: #418c97">-->
+        <!--<th width="20%">운송장번호</th>-->
+        <!--<th width="15%">배송사</th>-->
+        <!--<th width="20%">주문번호</th>-->
+        <!--<th width="15%">배송상태</th>-->
+        <!--<th width="20%">등록일</th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+
+      <thead>
+      <p *ngIf="loading" style="text-align: center; align-content: center; margin: 20%" align="center">
+        로딩중입니다 잠시만 기다려 주세요 .. &nbsp;&nbsp;&nbsp;
+        <img *ngIf="loading"
+             src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+      </p>
+      </thead>
+
+      <tr *ngIf="!loading" style="color: #418c97; background-color: white">
+        <th width="20%">운송장번호</th>
+        <th width="15%">배송사</th>
+        <th width="20%">주문번호</th>
+        <th width="15%">배송상태</th>
+        <th width="20%">등록일</th>
+      </tr>
+      <tbody *ngIf="!loading">
+      <tr *ngFor="let invoice of invoices" style="cursor: hand" (click)="gotoDetail(invoice)">
+        <td>{{ invoice.invoice }}</td>
+        <td>{{ invoice.comcodename }}</td>
+        <td>{{ invoice.fid }}</td>
+        <td *ngIf="invoice.level == '1'">배송준비</td>
+        <td *ngIf="invoice.level == '2'">집화완료</td>
+        <td *ngIf="invoice.level == '3'">배송진행중</td>
+        <td *ngIf="invoice.level == '4'">지점도착</td>
+        <td *ngIf="invoice.level == '5'">배송출발</td>
+        <td *ngIf="invoice.level == '6'">배송완료</td>
+        <td *ngIf="invoice.level == '0'">-</td>
+        <td>{{ invoice.regdate | slice:0:19 }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <pagination [total]="total$ | async" [page]="page"
+                (goTo)="getInvoices($event, datefrom.value, dateto.value, comcode.value, level.value, period.value)"></pagination>
+    <div style="text-align: center; margin-top:3%; vertical-align: middle" *ngIf="!loading">
+      <table style="height: 500px; vertical-align: middle;" align="center" *ngIf="invoices.length==0">
+        <img src="http://www.genesispure.kr/asset/image/common/no_search.gif" style="margin-top: 45%">
+        <h4>해당기간에 데이터가 없습니다</h4><h5>조회기간을 설정해 주세요</h5>
+      </table>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="text-center" align="center" style="vertical-align: middle;">
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <p class="list-inline text-center" align="center" style="vertical-align: middle; color:#999999">
+            ⓒ Sweettracker Corp. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</section>
+
+
+

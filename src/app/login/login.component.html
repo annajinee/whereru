@@ -1,0 +1,32 @@
+<div class="col-md-6 col-md-offset-3" style="margin-top: 8%">
+  <p style="font-size: 36px" align="center">배송연동 Admin</p>
+  <div class="card" style="padding:10%;">
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <label for="username">아이디</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
+               required/>
+        <div *ngIf="f.submitted && !username.valid" class="help-block">아이디를 입력해주세요</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <label for="password">비밀번호</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+               required/>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">비밀번호를 입력해주세요</div>
+      </div>
+      <p *ngIf="error" style="color: #f6675d"><i class="zmdi zmdi-alert-triangle">&nbsp;</i>아이디 또는 비밀번호가 틀립니다</p>
+      <div align="center" style="vertical-align: middle; margin-top: 10%">
+        <button [disabled]="loading" class="btn btn-info btn-lg btn-block waves-effect" style="vertical-align: middle">로그인</button>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="list-inline text-center" align="center" style="vertical-align: middle; color: #999999">
+          ⓒ Sweettracker Corp. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
