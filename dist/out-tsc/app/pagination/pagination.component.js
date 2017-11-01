@@ -88,4 +88,4 @@ export var PaginationComponent = (function () {
     ], PaginationComponent);
     return PaginationComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/pagination/pagination.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/pagination/pagination.component.js.map

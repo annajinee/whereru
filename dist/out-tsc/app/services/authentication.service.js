@@ -55,4 +55,4 @@ export var AuthenticationService = (function () {
     ], AuthenticationService);
     return AuthenticationService;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/services/authentication.service.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/services/authentication.service.js.map

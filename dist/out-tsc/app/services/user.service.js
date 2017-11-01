@@ -39,4 +39,4 @@ export var UserService = (function () {
     ], UserService);
     return UserService;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/services/user.service.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/services/user.service.js.map

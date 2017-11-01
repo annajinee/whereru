@@ -47,4 +47,4 @@ export var LoginComponent = (function () {
     ], LoginComponent);
     return LoginComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/login/login.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/login/login.component.js.map

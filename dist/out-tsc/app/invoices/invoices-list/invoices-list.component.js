@@ -229,4 +229,4 @@ export var InvoiceListComponent = (function () {
     ], InvoiceListComponent);
     return InvoiceListComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/invoices/invoices-list/invoices-list.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/invoices/invoices-list/invoices-list.component.js.map

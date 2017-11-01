@@ -272,36 +272,34 @@
       </ul>
     </li>
 
-    <li class="active">
-      <a href="index.html"><i class="zmdi zmdi-home"></i> Home</a>
+    <li [routerLinkActive]="['active']">
+      <a [routerLink]="['/home']"><i class="zmdi zmdi-home"></i> Home</a>
     </li>
-    <li>
-      <a href="typography.html"><i class="zmdi zmdi-view-compact"></i>Recent news reports</a>
+    <li [routerLinkActive]="['active']">
+      <a [routerLink]="['/news']"><i class="zmdi zmdi-view-compact"></i>Recent news reports</a>
 
     </li>
     <li class="sub-menu"><a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-format-underlined"></i>Searching for the missing</a>
       <ul>
-        <li><a href="textual-menu.html">Textual menu</a></li>
-        <li><a href="image-logo.html">Image logo</a></li>
-        <li><a href="top-mainmenu.html">Mainmenu on top</a></li>
+        <li [routerLinkActive]="['active']"><a href="textual-menu.html">My Connection</a></li>
+        <li [routerLinkActive]="['active']"><a href="image-logo.html">Searching Missing</a></li>
       </ul>
     </li>
+
+    <li [routerLinkActive]="['active']">
+      <a href="index.html"><i class="zmdi zmdi-trending-down"></i>Statistics report</a>
+    </li>
+
+
     <li class="sub-menu">
       <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-widgets"></i>Government support</a>
 
       <ul>
-        <li><a href="widget-templates.html">Templates</a></li>
-        <li><a href="widgets.html">Widgets</a></li>
+        <li [routerLinkActive]="['active']"><a href="widget-templates.html">Support</a></li>
+        <li [routerLinkActive]="['active']"><a href="widgets.html">Q & A</a></li>
       </ul>
     </li>
 
-    <li class="sub-menu">
-      <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-trending-down"></i>Statistics report</a>
-      <ul>
-        <li><a href="flot-charts.html">Flot Charts</a></li>
-        <li><a href="other-charts.html">Other Charts</a></li>
-      </ul>
-    </li>
 
   </ul>
 </aside>
@@ -309,3 +307,9 @@
 
 
   <router-outlet></router-outlet>
+
+<div style="padding-top:8%">
+<footer id="footer">
+  Seoul IOT Hackerton 2017 &copy; VADA
+</footer>
+</div>

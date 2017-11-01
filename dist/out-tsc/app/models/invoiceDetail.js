@@ -19,4 +19,4 @@ export var InvoiceDetail = (function () {
     ;
     return InvoiceDetail;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/models/invoiceDetail.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/models/invoiceDetail.js.map

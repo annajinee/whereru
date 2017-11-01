@@ -317,4 +317,4 @@ export var DeliveredComponent = (function () {
     ], DeliveredComponent);
     return DeliveredComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/statics/delivered/delivered.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/statics/delivered/delivered.component.js.map

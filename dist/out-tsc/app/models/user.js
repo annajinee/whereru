@@ -3,4 +3,4 @@ export var User = (function () {
     }
     return User;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/models/user.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/models/user.js.map

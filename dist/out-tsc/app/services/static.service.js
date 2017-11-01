@@ -76,4 +76,4 @@ export var StaticService = (function () {
     ], StaticService);
     return StaticService;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/services/static.service.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/services/static.service.js.map

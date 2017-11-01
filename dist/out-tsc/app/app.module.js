@@ -14,31 +14,22 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { PaginationComponent } from './pagination';
-import { PaginationhalfComponent } from './pagination';
 import { MomentModule } from 'angular2-moment';
 import { AlertComponent } from './directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
-import { NoticeComponent } from './notice/notice-list/notice.component';
-import { TrackingComponent } from './statics/tracking/tracking.component';
-import { DeliveredComponent } from './statics/delivered/delivered.component';
-import { NotdeliveredComponent } from "./statics/notdelivered/notdelivered.component";
 import { StaticService } from "./services/static.service";
 import { ChartModule } from 'angular2-chartjs';
 import { DateTimePickerDirective } from "ng2-eonasdan-datetimepicker/dist/datetimepicker.directive";
 import { NoticeService } from "./services/notice.service";
 import { NavigationService } from "./services/navigation.service";
-import { NoticeaddComponent } from "./notice/notice-add/noticeadd.component";
-import { NoticedetailComponent } from "./notice/notice-detail/noticedetail.component";
-import { AddCommaFormat, AddCommaFormatNumber } from "./pipe/addcomma";
-import { InvoiceListComponent } from "./invoices/invoices-list/invoices-list.component";
-import { InvoiceNotDeliveredListComponent } from "./invoices/invoices-nonelist/invoices-nonelist.component";
 import { InvoiceService } from "./services/invoice.service";
 import { ProfileaboutComponent } from "./profile/profile-about/profileabout.component";
 import { ProfileconnectionsComponent } from "./profile/profile-connectoins/profileconnctions.component";
+import { HomeComponent } from "./home/home.component";
+import { NewsComponent } from "./news/news.component";
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -58,20 +49,11 @@ export var AppModule = (function () {
                 AlertComponent,
                 LoginComponent,
                 RegisterComponent,
-                InvoiceListComponent,
-                InvoiceNotDeliveredListComponent,
-                PaginationComponent,
-                PaginationhalfComponent,
-                NoticeComponent,
-                TrackingComponent,
-                DeliveredComponent,
-                NotdeliveredComponent,
+                HomeComponent,
                 DateTimePickerDirective,
-                NoticeaddComponent,
-                NoticedetailComponent, AddCommaFormat,
-                AddCommaFormatNumber,
                 ProfileaboutComponent,
-                ProfileconnectionsComponent
+                ProfileconnectionsComponent,
+                NewsComponent
             ],
             providers: [
                 AuthGuard,
@@ -89,4 +71,4 @@ export var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/app.module.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/app.module.js.map

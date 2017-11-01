@@ -26,4 +26,4 @@ export var ProfileconnectionsComponent = (function () {
     ], ProfileconnectionsComponent);
     return ProfileconnectionsComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/profile/profile-connectoins/profileconnctions.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/profile/profile-connectoins/profileconnctions.component.js.map

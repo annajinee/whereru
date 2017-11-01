@@ -23,4 +23,4 @@ export var NavigationService = (function () {
     ], NavigationService);
     return NavigationService;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/services/navigation.service.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/services/navigation.service.js.map

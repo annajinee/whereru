@@ -41,4 +41,4 @@ export var RegisterComponent = (function () {
     ], RegisterComponent);
     return RegisterComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/register/register.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/register/register.component.js.map

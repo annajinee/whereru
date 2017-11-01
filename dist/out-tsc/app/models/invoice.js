@@ -23,4 +23,4 @@ export var Invoice = (function () {
     ;
     return Invoice;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/models/invoice.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/models/invoice.js.map

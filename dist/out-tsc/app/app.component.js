@@ -45,4 +45,4 @@ export var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/app.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/app.component.js.map

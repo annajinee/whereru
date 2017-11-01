@@ -60,4 +60,4 @@ export var NoticeService = (function () {
     ], NoticeService);
     return NoticeService;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/services/notice.service.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/services/notice.service.js.map

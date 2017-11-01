@@ -5,4 +5,4 @@
 export var environment = {
     production: false
 };
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/environments/environment.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/environments/environment.js.map

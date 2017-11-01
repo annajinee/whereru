@@ -6,4 +6,4 @@ if (environment.production) {
     enableProdMode();
 }
 platformBrowserDynamic().bootstrapModule(AppModule);
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/main.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/main.js.map

@@ -6,4 +6,4 @@ export var Notice = (function () {
     }
     return Notice;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/models/notice.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/models/notice.js.map

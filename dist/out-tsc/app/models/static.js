@@ -16,4 +16,4 @@ export var Static = (function () {
     ;
     return Static;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/models/static.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/models/static.js.map

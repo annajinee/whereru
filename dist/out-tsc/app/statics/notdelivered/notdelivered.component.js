@@ -218,4 +218,4 @@ export var NotdeliveredComponent = (function () {
     ], NotdeliveredComponent);
     return NotdeliveredComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/statics/notdelivered/notdelivered.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/statics/notdelivered/notdelivered.component.js.map

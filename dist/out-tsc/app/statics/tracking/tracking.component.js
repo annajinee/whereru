@@ -208,4 +208,4 @@ export var TrackingComponent = (function () {
     ], TrackingComponent);
     return TrackingComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/statics/tracking/tracking.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/statics/tracking/tracking.component.js.map

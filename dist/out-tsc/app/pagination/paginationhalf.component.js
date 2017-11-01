@@ -88,4 +88,4 @@ export var PaginationhalfComponent = (function () {
     ], PaginationhalfComponent);
     return PaginationhalfComponent;
 }());
-//# sourceMappingURL=/Users/annakim/Desktop/Whereru/src/app/pagination/paginationhalf.component.js.map
+//# sourceMappingURL=/Users/annakim/Desktop/gitforanna/whereru/src/app/pagination/paginationhalf.component.js.map
