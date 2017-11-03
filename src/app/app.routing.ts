@@ -11,7 +11,7 @@ import {NavigationService} from "./services/navigation.service";
 import {ProfileaboutComponent} from "./profile/profile-about/profileabout.component";
 import {ProfileconnectionsComponent} from "./profile/profile-connectoins/profileconnctions.component";
 import {NewsComponent} from "./news/news.component";
-
+import {MissingconnectionsComponent} from "./connctions/missingconnctions.component"
 
 
 
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
   {path: 'news', component: NewsComponent,  canDeactivate: [ NavigationService ] },
   {path: 'profile/about', component: ProfileaboutComponent, canDeactivate: [ NavigationService ] }, //프로필 상세보기
   {path: 'profile/connections', component: ProfileconnectionsComponent, canDeactivate: [ NavigationService ] }, //프로필 상세보기
-
+  {path: 'connections/missing', component: MissingconnectionsComponent, canDeactivate: [ NavigationService ] },
 
   // otherwise redirect to home
   {path: '**', redirectTo: 'home'}

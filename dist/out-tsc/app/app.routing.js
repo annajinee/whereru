@@ -7,6 +7,7 @@ import { NavigationService } from "./services/navigation.service";
 import { ProfileaboutComponent } from "./profile/profile-about/profileabout.component";
 import { ProfileconnectionsComponent } from "./profile/profile-connectoins/profileconnctions.component";
 import { NewsComponent } from "./news/news.component";
+import { MissingconnectionsComponent } from "./connctions/missingconnctions.component";
 export var RouteComponent = (function () {
     function RouteComponent(changeRef, appRef) {
         this.changeRef = changeRef;
@@ -28,6 +29,7 @@ var appRoutes = [
     { path: 'news', component: NewsComponent, canDeactivate: [NavigationService] },
     { path: 'profile/about', component: ProfileaboutComponent, canDeactivate: [NavigationService] },
     { path: 'profile/connections', component: ProfileconnectionsComponent, canDeactivate: [NavigationService] },
+    { path: 'connections/missing', component: MissingconnectionsComponent, canDeactivate: [NavigationService] },
     // otherwise redirect to home
     { path: '**', redirectTo: 'home' }
 ];

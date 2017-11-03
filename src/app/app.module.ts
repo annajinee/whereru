@@ -28,6 +28,7 @@ import {ProfileaboutComponent} from "./profile/profile-about/profileabout.compon
 import {ProfileconnectionsComponent} from "./profile/profile-connectoins/profileconnctions.component";
 import {HomeComponent} from "./home/home.component";
 import {NewsComponent} from "./news/news.component";
+import {MissingconnectionsComponent} from "./connctions/missingconnctions.component"
 
 
   @NgModule({
@@ -49,7 +50,8 @@ import {NewsComponent} from "./news/news.component";
     DateTimePickerDirective,
     ProfileaboutComponent,
     ProfileconnectionsComponent,
-    NewsComponent
+    NewsComponent,
+    MissingconnectionsComponent
   ],
   providers: [
     AuthGuard,

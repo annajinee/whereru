@@ -30,6 +30,7 @@ import { ProfileaboutComponent } from "./profile/profile-about/profileabout.comp
 import { ProfileconnectionsComponent } from "./profile/profile-connectoins/profileconnctions.component";
 import { HomeComponent } from "./home/home.component";
 import { NewsComponent } from "./news/news.component";
+import { MissingconnectionsComponent } from "./connctions/missingconnctions.component";
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -53,7 +54,8 @@ export var AppModule = (function () {
                 DateTimePickerDirective,
                 ProfileaboutComponent,
                 ProfileconnectionsComponent,
-                NewsComponent
+                NewsComponent,
+                MissingconnectionsComponent
             ],
             providers: [
                 AuthGuard,

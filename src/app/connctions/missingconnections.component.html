@@ -1,0 +1,111 @@
+<section id="content" style="margin-top: 3%">
+    <div class="container container-alt">
+        <div class="block-header">
+            <h2>Connect Information<small></small></h2>
+            <ul class="actions m-t-20 hidden-xs">
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown">
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="">Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href="">Account Settings</a>
+                        </li>
+                        <li>
+                            <a href="">Other Settings</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" id="profile-main">
+            <div class="pm-overview c-overflow">
+
+                <div class="pmo-pic">
+                    <div class="p-relative">
+                        <a href="">
+                            <img class="img-responsive" src="img/profile-pics/moyana.jpg" alt="">
+                        </a>
+
+                        <div class="dropdown pmop-message">
+                            <a data-toggle="dropdown" href="" class="btn bgm-white btn-float z-depth-1">
+                                <i class="zmdi zmdi-email"></i>
+                            </a>
+
+                            <div class="dropdown-menu">
+                                <textarea placeholder="Write something..."></textarea>
+
+                                <button class="btn bgm-black btn-float"><i class="zmdi zmdi-mail-send"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <a href="" class="pmop-edit">
+                            <i class="zmdi zmdi-camera"></i>
+                            <span class="hidden-xs">Update Profile Picture</span>
+                        </a>
+                    </div>
+
+
+                    <div class="pmo-stat">
+                        send E-mail
+                        <h2 class="m-0">Moyana</h2>
+
+                    </div>
+                </div>
+
+                <div class="pmo-block pmo-contact hidden-xs">
+                    <h2>Contact</h2>
+
+                    <ul>
+                        <li><i class="zmdi zmdi-account-box-o"></i>Moyana</li>
+                        <li style="font-weight: bold"><i class="zmdi zmdi-info-outline"></i>Death</li>
+                        <li><i class="zmdi zmdi-more"></i>under the collapsed building</li>
+                        <li><i class="zmdi zmdi-refresh-sync"></i>2017-11-02 15:30</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="pm-body clearfix">
+                <ul class="tab-nav tn-justified">
+                    <li class="active"><a [routerLink]="['/connections/missing']">About</a></li>
+                </ul>
+
+
+                <div class="pmb-block">
+                    <div class="pmbb-header">
+                        <h2><i class="zmdi zmdi-account m-r-10"></i>Location Information</h2>
+
+                        <ul class="actions">
+                            <li class="dropdown">
+                                <a href="" data-toggle="dropdown">
+                                    <i class="zmdi zmdi-more-vert"></i>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                        <div class="pmbb-view">
+                            <dl class="dl-horizontal">
+                                <dt>Contact</dt>
+                                <dd>+82 070-1234-5678</dd>
+                            </dl>
+                            <dl class="dl-horizontal">
+                                <dt>Location</dt>
+                                <dd>서울특별시 구로구 구로동</dd>
+                            </dl>
+                        </div>
+                    <div id="map"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
