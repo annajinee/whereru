@@ -23,13 +23,13 @@
       </ul>
     </div>
 
-    <div class="card" id="profile-main">
+    <div class="card" id="profile-main"  *ngFor="let use of user">
       <div class="pm-overview c-overflow">
 
         <div class="pmo-pic">
           <div class="p-relative">
             <a href="">
-              <img class="img-responsive" src="img/profile-pics/anna.jpeg" alt="">
+              <img class="img-responsive" src={{use.url}} alt="">
             </a>
 
             <div class="dropdown pmop-message">
@@ -53,73 +53,19 @@
 
 
           <div class="pmo-stat">
-            <h2 class="m-0">12</h2>
+            <h2 class="m-0">3</h2>
             Total Connections
           </div>
         </div>
 
-        <div class="pmo-block pmo-contact hidden-xs">
+        <div class="pmo-block pmo-contact hidden-xs" >
           <h2>Contact</h2>
 
           <ul>
-            <li><i class="zmdi zmdi-phone"></i>+82 010-9815-2338</li>
-            <li><i class="zmdi zmdi-email"></i>annajinee@gmail.com</li>
-            <li><i class="zmdi zmdi-facebook-box"></i>Anna Kim</li>
-            <li><i class="zmdi zmdi-twitter"></i> @annajinee (twitter.com/annajinee)</li>
-            <li>
-              <i class="zmdi zmdi-pin"></i>
-              <address class="m-b-0 ng-binding">
-                Jung-gu Taeagearo 18,<br>
-                Seoul,<br>
-                Korea
-              </address>
-            </li>
+            <li><i class="zmdi zmdi-phone"></i>{{use.phone}}</li>
+            <li><i class="zmdi zmdi-email"></i>{{use.email}}</li>
+            <li><i class="zmdi zmdi-account-box-o"></i>{{use.lastName}}</li>
           </ul>
-        </div>
-
-        <div class="pmo-block pmo-items hidden-xs">
-          <h2>Connections</h2>
-
-          <div class="pmob-body">
-            <div class="row">
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/5.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/6.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/7.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/8.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
-              </a>
-              <a href="" class="col-xs-2">
-                <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
-              </a>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -127,6 +73,7 @@
         <ul class="tab-nav tn-justified">
           <li class="active"><a [routerLink]="['/profile/about']">About</a></li>
           <li><a [routerLink]="['/profile/connections']">Connections</a></li>
+          <li><a [routerLink]="['/profile/add']">Add</a></li>
         </ul>
 
 
@@ -152,20 +99,22 @@
             <div class="pmbb-view">
               <dl class="dl-horizontal">
                 <dt>Full Name</dt>
-                <dd>Anna Kim</dd>
+                <dd>{{use.lastName}} {{use.firstName}}</dd>
               </dl>
               <dl class="dl-horizontal">
-                <dt>Gender</dt>
-                <dd>Female</dd>
+                <dt>SNS</dt>
+                <dd>{{use.sns}}</dd>
               </dl>
               <dl class="dl-horizontal">
-                <dt>Birthday</dt>
-                <dd>October 20, 1993</dd>
+                <dt>create Date</dt>
+                <dd>{{ use.createdAt }}</dd>
               </dl>
               <dl class="dl-horizontal">
-                <dt>Martial Status</dt>
-                <dd>Single</dd>
+                <dt>update Date</dt>
+                <dd>{{ use.updatedAt}}</dd>
               </dl>
+
+
             </div>
 
             <div class="pmbb-edit">
@@ -221,88 +170,6 @@
           </div>
         </div>
 
-        <div class="pmb-block">
-          <div class="pmbb-header">
-            <h2><i class="zmdi zmdi-phone m-r-10"></i> Contact Information</h2>
-
-            <ul class="actions">
-              <li class="dropdown">
-                <a href="" data-toggle="dropdown">
-                  <i class="zmdi zmdi-more-vert"></i>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>
-                    <a data-ma-action="profile-edit" href="">Edit</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="pmbb-body p-l-30">
-            <div class="pmbb-view">
-              <dl class="dl-horizontal">
-                <dt>Mobile Phone</dt>
-                <dd>+82 010-9815-2338</dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt>Email Address</dt>
-                <dd>annajinee@gmail.com</dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt>Twitter</dt>
-                <dd>@annajinee</dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt>Skype</dt>
-                <dd>annajinee</dd>
-              </dl>
-            </div>
-
-            <div class="pmbb-edit">
-              <dl class="dl-horizontal">
-                <dt class="p-t-10">Mobile Phone</dt>
-                <dd>
-                  <div class="fg-line">
-                    <input type="text" class="form-control"
-                           placeholder="eg. 00971 12345678 9">
-                  </div>
-                </dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt class="p-t-10">Email Address</dt>
-                <dd>
-                  <div class="fg-line">
-                    <input type="email" class="form-control"
-                           placeholder="eg. malinda.h@gmail.com">
-                  </div>
-                </dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt class="p-t-10">Twitter</dt>
-                <dd>
-                  <div class="fg-line">
-                    <input type="text" class="form-control" placeholder="eg. @malinda">
-                  </div>
-                </dd>
-              </dl>
-              <dl class="dl-horizontal">
-                <dt class="p-t-10">Skype</dt>
-                <dd>
-                  <div class="fg-line">
-                    <input type="text" class="form-control"
-                           placeholder="eg. malinda.hollaway">
-                  </div>
-                </dd>
-              </dl>
-
-              <div class="m-t-30">
-                <button class="btn btn-default btn-sm">Save</button>
-                <button data-ma-action="profile-edit-cancel" class="btn btn-link btn-sm">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

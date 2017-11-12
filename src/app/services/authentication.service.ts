@@ -5,57 +5,38 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) {
-  }
+    constructor(private http: Http) {
+    }
 
 
-  login(username, password): Observable<Response> {
-    let loginRequest = JSON.stringify({username: username, password: password});
-    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-
-    var name;
-
-    this.loadusername(username)
-      .subscribe(
-        result => {
-          name = result;
-          localStorage.setItem('name', name); //사용자 명 담기
+    login(email): boolean {
+        localStorage.clear();
+        localStorage.setItem('email', email);
+        if(localStorage.getItem('email') !==null){
+            return true;
+        }else {
+            return false;
         }
-      );
 
-    return this.http.post('/api/login', loginRequest, {headers: headers})
-      .do(resp => {
-        localStorage.setItem('currentUser', resp.headers.get('x-auth-token'));
-        localStorage.setItem('username', username);
-      });
-  }
-
-  loadusername(username): Observable<Response> {
-
-    let headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
-
-    return this.http.post('/api/users/loadbyuser', {username: username}, {headers: headers})
-      .map(res => res.text())
-      .catch(this.handleError);
-  }
+    }
 
 
-  logout() {
-    localStorage.removeItem('username');
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('name');
-    localStorage.clear();
-  }
+    logout() {
+        localStorage.removeItem('email');
+        localStorage.clear();
+    }
 
-  private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
-  }
+    private handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
+    }
 
 
-  isSignedIn(): boolean {
-    return localStorage.getItem('currentUser') !== null;
-  }
+    isSignedIn(): boolean {
+        console.log('email'+localStorage.getItem('email'));
+
+        return localStorage.getItem('email') !== null;
+    }
 
 
 }

@@ -26,17 +26,9 @@ export var LoginComponent = (function () {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
     LoginComponent.prototype.login = function () {
-        var _this = this;
-        this.loading = true;
-        this.error = false;
-        this.authenticationService.login(this.model.username, this.model.password)
-            .subscribe(function (data) {
-            _this.router.navigate([_this.returnUrl]);
-        }, function (error) {
-            _this.error = true;
-            // this.alertService.error(error, 'login');
-            _this.loading = false;
-        });
+        if (this.authenticationService.login(this.model.username) == true) {
+            this.router.navigate(['/home']);
+        }
     };
     LoginComponent = __decorate([
         Component({

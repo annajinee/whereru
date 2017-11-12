@@ -10,19 +10,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { AlertService } from "../../services/alert.service";
+import { ProfileService } from "../../services/profile.service";
 export var ProfileconnectionsComponent = (function () {
-    function ProfileconnectionsComponent(router, alertService) {
+    function ProfileconnectionsComponent(router, profileService, alertService) {
         this.router = router;
+        this.profileService = profileService;
         this.alertService = alertService;
+        router.events.subscribe(function () {
+            localStorage.getItem('email');
+            // this.email='demo1@demo.com';
+        });
     }
     ProfileconnectionsComponent.prototype.ngOnInit = function () {
+        this.getUser();
+        this.getUserDetail();
+    };
+    ProfileconnectionsComponent.prototype.getUser = function () {
+        var _this = this;
+        this.profileService.getUsers()
+            .subscribe(function (result) {
+            _this.user = result['users'];
+        }, function (error) {
+        });
+    };
+    ProfileconnectionsComponent.prototype.getUserDetail = function () {
+        var _this = this;
+        this.profileService.getUserdetail()
+            .subscribe(function (result) {
+            _this.userDetail = result['user'];
+        }, function (error) {
+        });
     };
     ProfileconnectionsComponent = __decorate([
         Component({
             selector: 'app-profile',
             templateUrl: 'profileconnections.component.html',
         }), 
-        __metadata('design:paramtypes', [Router, AlertService])
+        __metadata('design:paramtypes', [Router, ProfileService, AlertService])
     ], ProfileconnectionsComponent);
     return ProfileconnectionsComponent;
 }());

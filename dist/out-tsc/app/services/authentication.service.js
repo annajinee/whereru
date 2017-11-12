@@ -8,38 +8,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 export var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
     }
-    AuthenticationService.prototype.login = function (username, password) {
-        var loginRequest = JSON.stringify({ username: username, password: password });
-        var headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
-        var name;
-        this.loadusername(username)
-            .subscribe(function (result) {
-            name = result;
-            localStorage.setItem('name', name); //사용자 명 담기
-        });
-        return this.http.post('/api/login', loginRequest, { headers: headers })
-            .do(function (resp) {
-            localStorage.setItem('currentUser', resp.headers.get('x-auth-token'));
-            localStorage.setItem('username', username);
-        });
-    };
-    AuthenticationService.prototype.loadusername = function (username) {
-        var headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
-        return this.http.post('/api/users/loadbyuser', { username: username }, { headers: headers })
-            .map(function (res) { return res.text(); })
-            .catch(this.handleError);
+    AuthenticationService.prototype.login = function (email) {
+        localStorage.clear();
+        localStorage.setItem('email', email);
+        if (localStorage.getItem('email') !== null) {
+            return true;
+        }
+        else {
+            return false;
+        }
     };
     AuthenticationService.prototype.logout = function () {
-        localStorage.removeItem('username');
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('name');
+        localStorage.removeItem('email');
         localStorage.clear();
     };
     AuthenticationService.prototype.handleError = function (error) {
@@ -47,7 +34,8 @@ export var AuthenticationService = (function () {
         return Observable.throw(error.json().error || 'Server error');
     };
     AuthenticationService.prototype.isSignedIn = function () {
-        return localStorage.getItem('currentUser') !== null;
+        console.log('email' + localStorage.getItem('email'));
+        return localStorage.getItem('email') !== null;
     };
     AuthenticationService = __decorate([
         Injectable(), 

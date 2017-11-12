@@ -10,23 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthenticationService } from "./services/authentication.service";
+import { ProfileService } from "./services/profile.service";
 export var AppComponent = (function () {
-    function AppComponent(router, loginService, route) {
+    function AppComponent(router, profileService, loginService, route) {
         var _this = this;
         this.router = router;
+        this.profileService = profileService;
         this.loginService = loginService;
         router.events.subscribe(function () {
             _this.isSignedIn = loginService.isSignedIn();
-            _this.username = localStorage.getItem('name');
+            _this.username = localStorage.getItem('email');
         });
     }
-    AppComponent.prototype.login = function (event, email, password) {
-        var _this = this;
+    AppComponent.prototype.ngOnInit = function () {
+        this.getUser();
+    };
+    AppComponent.prototype.login = function (event, email) {
         event.preventDefault();
-        this.loginService.login(email, password)
-            .subscribe(function () {
-            _this.router.navigate(['/add']);
-        }, this.handleError);
+        this.loginService.login(email);
     };
     AppComponent.prototype.logout = function () {
         this.loginService.logout();
@@ -35,13 +36,21 @@ export var AppComponent = (function () {
     AppComponent.prototype.handleError = function (error) {
         console.log(error.status);
     };
+    AppComponent.prototype.getUser = function () {
+        var _this = this;
+        this.profileService.getUserdetail()
+            .subscribe(function (result) {
+            _this.user = result['user'];
+        }, function (error) {
+        });
+    };
     AppComponent = __decorate([
         Component({
             moduleId: module.id,
             selector: 'app',
             templateUrl: 'app.component.html',
         }), 
-        __metadata('design:paramtypes', [Router, AuthenticationService, ActivatedRoute])
+        __metadata('design:paramtypes', [Router, ProfileService, AuthenticationService, ActivatedRoute])
     ], AppComponent);
     return AppComponent;
 }());

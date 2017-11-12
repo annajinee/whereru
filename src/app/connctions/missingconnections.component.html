@@ -23,13 +23,13 @@
             </ul>
         </div>
 
-        <div class="card" id="profile-main">
-            <div class="pm-overview c-overflow">
+        <div class="card" id="profile-main" *ngFor="let sta of users">
+            <div class="pm-overview c-overflow" >
 
                 <div class="pmo-pic">
                     <div class="p-relative">
                         <a href="">
-                            <img class="img-responsive" src="img/profile-pics/moyana.jpg" alt="">
+                            <img class="img-responsive" src="{{sta.url}}" alt="">
                         </a>
 
                         <div class="dropdown pmop-message">
@@ -54,7 +54,7 @@
 
                     <div class="pmo-stat">
                         send E-mail
-                        <h2 class="m-0">Moyana</h2>
+                        <h2 class="m-0">{{sta.firstName}} {{sta.lastName}}</h2>
 
                     </div>
                 </div>
@@ -63,10 +63,9 @@
                     <h2>Contact</h2>
 
                     <ul>
-                        <li><i class="zmdi zmdi-account-box-o"></i>Moyana</li>
-                        <li style="font-weight: bold"><i class="zmdi zmdi-info-outline"></i>Death</li>
-                        <li><i class="zmdi zmdi-more"></i>under the collapsed building</li>
-                        <li><i class="zmdi zmdi-refresh-sync"></i>2017-11-02 15:30</li>
+                        <li><i class="zmdi zmdi-account-box-o"></i>{{sta.firstName}} {{sta.lastName}}</li>
+                        <li style="font-weight: bold"><i class="zmdi zmdi-info-outline"></i>{{sta.status.status}}</li>
+                        <li><i class="zmdi zmdi-refresh-sync"></i>{{sta.status.updatedAt}}</li>
                     </ul>
                 </div>
 
@@ -94,14 +93,47 @@
                         <div class="pmbb-view">
                             <dl class="dl-horizontal">
                                 <dt>Contact</dt>
-                                <dd>+82 070-1234-5678</dd>
+                                <dd>{{sta.phone}}</dd>
                             </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Location</dt>
-                                <dd>서울특별시 구로구 구로동</dd>
-                            </dl>
+                            <!--<dl class="dl-horizontal">-->
+                                <!--<dt>Location</dt>-->
+                                <!--<dd>-->
+                                    <!--Waikīkī Beach, Honolulu, HI 96815, USA</dd>-->
+                            <!--</dl>-->
                         </div>
-                    <div id="map"></div>
+
+
+                    <sebm-google-map
+                            [latitude]="sta.status.lat|tonumber"
+                            [longitude]="sta.status.lng|tonumber"
+                            [zoom]="zoom"
+                            [disableDefaultUI]="false"
+                            [zoomControl]="false"
+                            (mapClick)="mapClicked($event)">
+
+                        <sebm-google-map-marker
+                                *ngFor="let m of markers; let i = index"
+                                (markerClick)="clickedMarker(m.label, i)"
+                                [latitude]="sta.status.lat|tonumber"
+                                [longitude]="sta.status.lng|tonumber"
+                                [label]="m.label"
+                                [markerDraggable]="m.draggable"
+                                (dragEnd)="markerDragEnd(m, $event)">
+
+                            <sebm-google-map-info-window>
+                                <strong style="color: black">reported location</strong>
+                            </sebm-google-map-info-window>
+
+                        </sebm-google-map-marker>
+
+                        <sebm-google-map-circle [latitude]="lat + 0.3" [longitude]="lng"
+                                                [radius]="5000"
+                                                [fillColor]="'red'"
+                                                [circleDraggable]="true"
+                                                [editable]="true">
+                        </sebm-google-map-circle>
+
+                    </sebm-google-map>
                 </div>
 
             </div>

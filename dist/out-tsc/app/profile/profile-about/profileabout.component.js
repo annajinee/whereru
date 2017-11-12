@@ -10,19 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { AlertService } from "../../services/alert.service";
+import { ProfileService } from "../../services/profile.service";
 export var ProfileaboutComponent = (function () {
-    function ProfileaboutComponent(router, alertService) {
+    function ProfileaboutComponent(router, profileService, alertService) {
         this.router = router;
+        this.profileService = profileService;
         this.alertService = alertService;
+        router.events.subscribe(function () {
+            localStorage.getItem('email');
+            // this.email='demo1@demo.com';
+        });
     }
     ProfileaboutComponent.prototype.ngOnInit = function () {
+        this.getUser();
+    };
+    ProfileaboutComponent.prototype.getUser = function () {
+        var _this = this;
+        this.profileService.getUserdetail()
+            .subscribe(function (result) {
+            _this.user = result['user'];
+        }, function (error) {
+        });
     };
     ProfileaboutComponent = __decorate([
         Component({
             selector: 'app-profile',
             templateUrl: 'profileabout.component.html',
         }), 
-        __metadata('design:paramtypes', [Router, AlertService])
+        __metadata('design:paramtypes', [Router, ProfileService, AlertService])
     ], ProfileaboutComponent);
     return ProfileaboutComponent;
 }());

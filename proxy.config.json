@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://211.253.10.55:5004",
+    "target": "http://fa5e5b0d.ngrok.io/",
     "secure": false,
     "logLevel": "debug"
   }

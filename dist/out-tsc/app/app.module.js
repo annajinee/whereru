@@ -13,24 +13,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { MomentModule } from 'angular2-moment';
 import { AlertComponent } from './directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
-import { StaticService } from "./services/static.service";
-import { ChartModule } from 'angular2-chartjs';
-import { DateTimePickerDirective } from "ng2-eonasdan-datetimepicker/dist/datetimepicker.directive";
-import { NoticeService } from "./services/notice.service";
 import { NavigationService } from "./services/navigation.service";
-import { InvoiceService } from "./services/invoice.service";
+import { ProfileService } from "./services/profile.service";
 import { ProfileaboutComponent } from "./profile/profile-about/profileabout.component";
 import { ProfileconnectionsComponent } from "./profile/profile-connectoins/profileconnctions.component";
 import { HomeComponent } from "./home/home.component";
-import { NewsComponent } from "./news/news.component";
 import { MissingconnectionsComponent } from "./connctions/missingconnctions.component";
+import { ProfileaddComponent } from "./profile/profile-add/profileadd.component";
+import { StaticComponent } from "./static/static.component";
+import { ChangeNumber } from "./connctions/pipe";
+import { AgmCoreModule } from 'angular2-google-maps/core';
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -38,12 +35,12 @@ export var AppModule = (function () {
         NgModule({
             imports: [
                 BrowserModule,
+                AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyCQwmBzHNsh5UHHf2VDkqieweXlwSEkKW0'
+                }),
                 FormsModule,
                 HttpModule,
                 routing,
-                MomentModule,
-                ChartModule,
-                Ng2Bs3ModalModule
             ],
             declarations: [
                 AppComponent,
@@ -51,21 +48,20 @@ export var AppModule = (function () {
                 LoginComponent,
                 RegisterComponent,
                 HomeComponent,
-                DateTimePickerDirective,
                 ProfileaboutComponent,
                 ProfileconnectionsComponent,
-                NewsComponent,
-                MissingconnectionsComponent
+                MissingconnectionsComponent,
+                ProfileaddComponent,
+                StaticComponent,
+                ChangeNumber
             ],
             providers: [
                 AuthGuard,
                 AlertService,
                 AuthenticationService,
                 UserService,
-                InvoiceService,
-                StaticService,
-                NoticeService,
-                NavigationService
+                NavigationService,
+                ProfileService
             ],
             bootstrap: [AppComponent]
         }), 

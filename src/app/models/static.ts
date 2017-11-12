@@ -3,17 +3,11 @@
  */
 
 export class Static {
-  constructor
-  (
-    public id: number,
-    public comcode: string,
-    public invoice: number,
-    public regdate: string,
-    public tiercode: string,
-    public cnt: string,
-    public diffpercent: number, // 미배송율 통계 -> 미배송율
-    public delivery_period: string
-  )
-  {};
+
+    public wounded: string;
+    public died: string;
+    public damaged: string
+    public createdAt :string;
+    public updatedAt: string;
 
 }
